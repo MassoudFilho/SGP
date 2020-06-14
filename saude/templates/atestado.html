@@ -1,0 +1,29 @@
+{% load static %}
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <!-- Informa onde estão os arquivos bootstrap dentro da pasta static -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <title>Saúde - Atestado</title>
+    {% bootstrap_css %}
+</head>
+<body>
+    <div class="container">
+        <h1>Documentos de Afastamentos</h1>
+        <h2>Este formulário será salvo em Atestado no Admin</h2>
+        {% bootstrap_messages %}
+        <! ONDE: dizer a URL para a qual o dado correspondente à entrada do usuário deve ser enviado. >
+        <! COMO: dizer o método HTTP pelo qual o dado deve ser retornado. >
+        <form action="{% url 'atestado' %}" method="post" class="form" autocomplete="off" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+                <button type="submit" class="btn btn-primary">Enviar dados</button>
+            {% endbuttons %}
+        </form>
+    </div>
+    <a href="{% url 'index' %}">Voltar para página inicial da SGP</a>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!-- "extends" quer dizer herdar -->
+<!-- Herdar o "main" de base.html -->
+{% extends 'base.html' %}
+
+{% block main %}
+
+<div class="container">
+
+    <h1>Secretaria de Gestão de Pessoas</h1>
+
+    <ul>
+        <li>Secretária Maria Lourdes</li>
+        <li>Secretária Adjunta Ana Lúcia</li>
+    </ul>
+
+    <h2><a href="{% url 'home_saude' %}">Coordenadoria de Saúde</a></h2>
+
+    <ul>
+        <li>Coordenador Manoel Christo</li>
+    </ul>
+
+    <h2><a href="pessoal.html">Coordenadoria de Desenvolvimento de Pessoal</a></h2>
+
+    <ul>
+        <li>Coordenador Jean</li>
+    </ul>
+
+    <h2><a href="pagamento.html">Coordenadoria de Pagamento</a></h2>
+
+    <ul>
+        <li>Coordenador Juliete</li>
+    </ul>
+
+</div>
+{% endblock %}

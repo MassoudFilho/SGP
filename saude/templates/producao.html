@@ -1,0 +1,39 @@
+<!-- Carregar Arquivos estáticos -->
+{% load static %}
+
+<!-- Carregar Arquivos boostrap4 -->
+{% load bootstrap4 %}
+
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Informar onde estão os arquivos bootstrap dentro da pasta static -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+
+    <title>Saúde - Produção</title>
+
+    {% bootstrap_css %}
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Produção</h1>
+        <h2>Estes dados serão salvos em Produção do Admin</h2>
+        {% bootstrap_messages %}
+        <! ONDE: dizer a URL para a qual o dado correspondente à entrada do usuário deve ser enviado. >
+        <! COMO: dizer o método HTTP pelo qual o dado deve ser retornado. >
+        <form action="{% url 'producao' %}" method="POST" class="form" autocomplete="off" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+            {% endbuttons %}
+        </form>
+    </div>
+</body>
+</html>

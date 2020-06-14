@@ -1,0 +1,42 @@
+{% load static %}
+{% load bootstrap4 %}
+
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Informa onde estão os arquivos bootstrap dentro da pasta static -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <title>Saude - Mostra Produção</title>
+    {% bootstrap_css %}
+</head>
+
+<body>
+    <div class="container">
+        <h1>Mostra Produção</h1>
+        <h2>Esses dados serão salvos em Produção do Admin</h2>
+
+        <table class="table table-dark">
+            <head>
+                    <tr>
+                        <th scope="col">Matricula</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Data</th>
+                    </tr>
+            </head>
+            <body>
+                {% for producao in producoes %}
+                    <tr>
+                        <td scope="row">{{ producao.matricula }}</td>
+                        <td scope="row">{{ producao.nome }}</td>
+                        <td scope="row">{{ producao.data }}</td>
+                    </tr>
+                {% endfor%}
+            </body>
+        </table>
+    </div>
+
+</body>
+</html>

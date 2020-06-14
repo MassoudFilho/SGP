@@ -1,0 +1,70 @@
+{% load static %}
+
+<!doctype html>
+
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Estamos trabalhando com CSS externo -->
+    <!-- Informa onde estão os arquivos bootstrap dentro da pasta static -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+
+    <style type="text/css">
+        p {font-size: 20; line-height: 8px}
+    </style>
+
+    <title>Base</title>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <br>
+        <div class="row">
+
+            <div class="col-1">
+                <img src="{% static 'images/Logo - TJPA.png' %}" alt="Tribunal de Justiça do Estado do Pará" width="50" height="60">
+            </div>
+
+            <div class="col-4">
+                <p>Poder Judiciário</p>
+                <p>Tribunal de Justiça do Estado do Pará - TJPA</p>
+                <p>Secretaria de Gestão de Pessoas - SGP</p>
+            </div>
+            <div class="col-3">
+            </div>
+
+            <div class="col-4">
+
+                <div class="container">
+                    {% if user.is_anonymous%}
+                        {{ logado }} <br>
+                        <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
+                    {% else%}
+                        <div class="alert alert-primary" role="alert">
+                        Usuário {{ user.get_full_name }} logado!
+                        </div>
+                        <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
+                    {% endif %}
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+    {% block main %}
+    {% endblock %}
+</body>
+
+</html>

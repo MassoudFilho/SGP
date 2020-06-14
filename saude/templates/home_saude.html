@@ -1,0 +1,46 @@
+<!-- "extends" quer dizer herdar -->
+<!-- Herdar o "main" de base.html -->
+{% extends 'base.html' %}
+
+{% block main %}
+
+<br>
+
+<div class="container">
+    <div class="row justify-content-end">
+        <div class="col-4">
+            <a href="{% url 'index' %}">Voltar para SGP</a>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1>Coordenadoria de Saúde</h1>
+            <br>
+            <h2>Coordenador Manoel Cristho</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <br>
+            <p>Formulários:</p>
+            <ul>
+                <li>
+                    <a href="{% url 'atestado' %}">Ir para Atestado</a><br>
+                </li>
+                <li>
+                    <a href="{% url 'producao' %}">Ir para Producao</a><br>
+                </li>
+                <li>
+                    <a href="{% url 'mostraproducao' %}">Ir para Mostrar produção</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
