@@ -124,5 +124,10 @@ USE_TZ = True
 STATIC_URL = '/static/' # usado durante o desenvolvimento.
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # usado durante a produção.
 
+# Definir a URL de login.
+LOGIN_URL = '/login/'
+
+# Dizer para onde enviar quando o usuário fizer o login.
 LOGIN_REDIRECT_URL = 'index'
+# Dizer para onde enviar quando o usuário fizer o logout.
 LOGOUT_REDIRECT_URL = 'index'
