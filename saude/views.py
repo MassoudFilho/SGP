@@ -1,16 +1,21 @@
 from django.shortcuts import render
 from django.contrib import messages
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 from .models import Atestado, Producao
 
 from .forms import AtestadoModelForm, ProducaoModelForm
 
 
+# @login_required: Obriga o usuário a logar em Admin.
+@login_required
 def home_saude(request):
     return render(request, 'home_saude.html')
 
 
+# @login_required: Obriga o usuário a logar em Admin.
+@login_required
 def atestado(request):
     # se o usuário enviou um POST para gente.
     if str(request.method) == 'POST':
@@ -31,6 +36,8 @@ def atestado(request):
     return render(request, 'atestado.html', context)
 
 
+# @login_required: Obriga o usuário a logar em Admin.
+@login_required
 def producao(request):
     #  Verificar se o usuário está logado no Admin.
     # AnonymousUser é a denominação usada quando não está logado.
@@ -59,6 +66,8 @@ def producao(request):
         return HttpResponse('Você precisa estar logado')
 
 
+# @login_required: Obriga o usuário a logar em Admin.
+@login_required
 def mostraproducao(request):
     context = {
         'producao': Producao.objects.all()
