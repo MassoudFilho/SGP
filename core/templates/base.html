@@ -45,7 +45,21 @@
                 <div class="container">
                     {% if user.is_anonymous%}
                         {{ logado }} <br>
-                        <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
+
+                        <div class="container">
+                            <form class="form-signin" method="post" autocomplete="off">
+                            {% csrf_token %}
+
+                                <label for="username" class="sr-only">Name</label>
+                                <input type="text" id="username" name="username" class="form-control" placeholder="Informe o seu nome" required="autofocus">
+
+                                <label for="password" class="sr-only">Senha</label>
+                                <input type="password" id="password" name="password" class="form-control" placeholder="Informe a sua senha" required>
+
+                                <button class="btn btn-lg btn-primary btn-block" type="submit">Acessar</button>
+                            </form>
+                        </div>
+
                     {% else%}
                         <div class="alert alert-primary" role="alert">
                         Usuário {{ user.get_full_name }} logado!
@@ -59,9 +73,6 @@
         </div>
 
     </div>
-
-
-
 
     {% block main %}
     {% endblock %}
