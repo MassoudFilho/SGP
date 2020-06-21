@@ -37,37 +37,26 @@
                 <p>Tribunal de Justiça do Estado do Pará - TJPA</p>
                 <p>Secretaria de Gestão de Pessoas - SGP</p>
             </div>
+
             <div class="col-3">
-            </div>
-
-            <div class="col-4">
-
                 <div class="container">
                     {% if user.is_anonymous%}
-                        {{ logado }} <br>
-
-                        <div class="container">
-                            <form class="form-signin" method="post" autocomplete="off">
-                            {% csrf_token %}
-
-                                <label for="username" class="sr-only">Name</label>
-                                <input type="text" id="username" name="username" class="form-control" placeholder="Informe o seu nome" required="autofocus">
-
-                                <label for="password" class="sr-only">Senha</label>
-                                <input type="password" id="password" name="password" class="form-control" placeholder="Informe a sua senha" required>
-
-                                <button class="btn btn-lg btn-primary btn-block" type="submit">Acessar</button>
-                            </form>
+                        <div class="alert alert-primary" role="alert">
+                        Usuário não logado!
                         </div>
-
+                        <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
                     {% else%}
                         <div class="alert alert-primary" role="alert">
-                        Usuário {{ user.get_full_name }} logado!
+                        Usuário logado!
                         </div>
                         <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
                     {% endif %}
                 </div>
+            </div>
 
+            <div class="col-4">
+                {% block content %}
+                {% endblock %}
             </div>
 
         </div>

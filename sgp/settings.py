@@ -125,7 +125,8 @@ STATIC_URL = '/static/' # usado durante o desenvolvimento.
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # usado durante a produção.
 
 # Definir a URL de login.
-LOGIN_URL = '/login/'
+LOGIN_URL = ''
+#LOGIN_URL = '/login/'
 
 # Dizer ao Django para onde ele deve enviar quando o usuário fizer o login.
 LOGIN_REDIRECT_URL = 'index'

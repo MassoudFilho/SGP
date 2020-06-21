@@ -6,7 +6,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls')),
     path('sgp/', include('saude.urls')),
-    path('contas/', include('django.contrib.auth.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),  # Inserção do conjunto de urls account, conjunto que envolve ações com a conta do usuário.
 ]
 
 
