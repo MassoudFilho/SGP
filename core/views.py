@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_protect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
 
 # Função usada para identificar se o usuário está logado no Admin.
 def usuario_logado(request):
@@ -28,4 +30,10 @@ def submit_login(request):
             return redirect('/')
         else:
             messages.error(request, 'Usuário e senha inválida')
+    return redirect('/')
+
+
+def logout_user(request):
+    print(request.user)
+    logout(request)
     return redirect('/')
