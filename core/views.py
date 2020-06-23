@@ -1,5 +1,7 @@
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_protect
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
 
 # Função usada para identificar se o usuário está logado no Admin.
 def usuario_logado(request):
@@ -11,3 +13,19 @@ def usuario_logado(request):
     # Usuário não está logado no Admin se request.user é igual a AnonymousUser.
     else:
         return render(request, 'index.html', {'logado': 'Você não esta logado no Admin'})
+
+
+@csrf_protect
+def submit_login(request):
+    if request.POST:
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        print(username)
+        print(password)
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('/')
+        else:
+            messages.error(request, 'Usuário e senha inválida')
+    return redirect('/')
