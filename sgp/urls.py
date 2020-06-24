@@ -27,5 +27,3 @@ admin.site.site_header = 'Secretaria de Gestão de Pessoas do TJPA'
 admin.site.site_title = 'SGP'
 # Título da página índice.
 admin.site.index_title = 'Sistema de Gerenciamento'
-
-

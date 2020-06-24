@@ -29,45 +29,42 @@
         <div class="row">
 
             <div class="col-1">
-                <img src="{% static 'images/Logo - TJPA.png' %}" alt="Tribunal de Justiça do Estado do Pará" width="50" height="60">
+                <img src="{% static 'images/Logo - TJPA.png' %}"
+                     alt="Tribunal de Justiça do Estado do Pará"
+                     width="50"
+                     height="60">
             </div>
 
-            <div class="col-4">
+            <div class="col-5">
                 <p>Poder Judiciário</p>
                 <p>Tribunal de Justiça do Estado do Pará - TJPA</p>
                 <p>Secretaria de Gestão de Pessoas - SGP</p>
             </div>
 
-            <div class="col-3">
-                <div class="container">
-                    {% if user.is_anonymous%}
-                        <div class="alert alert-primary" role="alert">
-                        Usuário não logado!
-                        </div>
-                        <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
-                    {% else%}
-                        <div class="alert alert-primary" role="alert">
-                        Usuário logado!
-                        </div>
-                        <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
-                    {% endif %}
-                </div>
-            </div>
-
-             <div class="col-4">
+             <div class="col-6">
 
                 <form action="submit", method="POST">
                     {% csrf_token %}
 
                     <div class="form-group">
+
+                    {% if user.is_anonymous%}
+
                         <label for="username">Usuário</label>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                        <input type="text"
+                               style="width:150px;"
+                               id="username"
+                               name="username"
+                               placeholder="Usuário">
+
+                        <label for="password">Senha</label>
+                        <input type="password"
+                               style="width:150px;"
+                               id="password"
+                               name="password"
+                               placeholder="Password">
                     </div>
 
-                    <div class="form-group">
-                        <label for="password">Senha</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                    </div>
                         {% for message in messages %}
                         <div class="alert alert-danger">
                           <strong>Error!</strong> {{ message }}
@@ -75,7 +72,12 @@
                         {% endfor %}
                     <button type="submit" class="btn btn-default">Entrar</button>
 
+                    {% else%}
+
+                    <label>Usuário: {{ user.get_username }}</label>
                     <a href="logout">Sair</a>
+
+                    {% endif %}
 
                 </form>
 
