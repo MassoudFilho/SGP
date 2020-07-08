@@ -22,9 +22,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'a5p$5g6k@&)8_)x=ssstm%*gvm+n(y1fg84h+fq@)0x9t_abie'
 
+
 # SECURITY WARNING: don't run with debug turned on in production!
+# True para modo de desenvolvimento e False para modo de produção.
 DEBUG = True
 
+
+# Informar quais os endereços que queremos que a aplicação Django seja acessada.
 ALLOWED_HOSTS = []
 
 
@@ -52,6 +56,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
+# Configura qual é a url principal de seu projeto.
 ROOT_URLCONF = 'sgp.urls'
 
 TEMPLATES = [
